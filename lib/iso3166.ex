@@ -62,7 +62,8 @@ defmodule ISO3166 do
   end
   defp do_cc3toname(_), do: :undefined
 
-  defp do_with_case(v, func) do
+  # matches the case of the input if it's all upper or lower
+  defp do_with_matching_case(v, func) do
     case is_downcase?(v) do
       true  -> func.(v)
       false ->
@@ -78,14 +79,18 @@ defmodule ISO3166 do
     end
   end
 
+  # converts input to lowercase and executes the func
+  defp do_with_proper_case(v, func) do
+    v |> String.downcase |> func.()
+  end
+
   def all, do: @mappings
 
-  def cc2to3(v), do: do_with_case v, &do_cc2to3/1
+  def cc2to3(v), do: do_with_matching_case v, &do_cc2to3/1
 
-  def cc3to2(v), do: do_with_case v, &do_cc3to2/1
+  def cc3to2(v), do: do_with_matching_case v, &do_cc3to2/1
 
-  def cc2toname(v), do: do_with_case v, &do_cc2toname/1
+  def cc2toname(v), do: do_with_proper_case v, &do_cc2toname/1
 
-  def cc3toname(v), do: do_with_case v, &do_cc3toname/1
-
+  def cc3toname(v), do: do_with_proper_case v, &do_cc3toname/1
 end
