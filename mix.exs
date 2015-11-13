@@ -3,19 +3,31 @@ defmodule ISO3166.Mixfile do
 
   def project do
     [app: :iso3166,
-     version: "0.0.1",
+     version: "0.0.2",
      elixir: "~> 1.1",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     description: description,
+     package: package,
      deps: deps]
+  end
+
+  defp description do
+    """
+    A library that provides a list of ISO3166 country names,
+    two letter abbreviations, three letter abbreviations, and
+    functions for converting between them.
+    """
   end
 
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
   def application do
-    dev_apps = Mix.env == :dev && [:exsync] || []
-    [applications: dev_apps ++ [:logger]]
+    case Mix.env == :dev do
+      true -> [applications: [:exsync]]
+      false -> []
+    end
   end
 
   # Dependencies can be Hex packages:
@@ -32,6 +44,14 @@ defmodule ISO3166.Mixfile do
       {:poison, "~> 1.5"},
       {:floki, "~> 0.7"},
       {:exsync, "~> 0.1", only: :dev}
+    ]
+  end
+
+  defp package do
+    [
+      maintainers: ["joel.meyer@gmail.com"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/joelpm/iso3166ex"}
     ]
   end
 end
