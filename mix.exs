@@ -3,8 +3,8 @@ defmodule ISO3166.Mixfile do
 
   def project do
     [app: :iso3166,
-     version: "0.0.2",
-     elixir: "~> 1.1",
+     version: "0.0.3",
+     elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      description: description,
@@ -41,9 +41,9 @@ defmodule ISO3166.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:poison, "~> 1.5"},
-      {:floki, "~> 0.7"},
-      {:exsync, "~> 0.1", only: :dev}
+      { :poison, "~> 2.0"             },
+      { :floki,  "~> 0.7"             },
+      { :exsync, "~> 0.1", only: :dev }
     ]
   end
 
