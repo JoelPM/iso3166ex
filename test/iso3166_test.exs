@@ -41,4 +41,13 @@ defmodule ISO3166Test do
     assert ISO3166.cc2toname("YYY") == :undefined
     assert ISO3166.cc2toname("xxx") == :undefined
   end
+
+  test "regions" do
+    Enum.each ISO3166.regions, fn ([country, region, code]) ->
+      assert ISO3166.parse_region(code) == {country, region}
+      assert ISO3166.parse_region(String.downcase(code)) == {country, region}
+    end
+    assert ISO3166.parse_region("aa-aa") == :undefined
+    assert ISO3166.parse_region("BB-BB") == :undefined
+  end
 end
