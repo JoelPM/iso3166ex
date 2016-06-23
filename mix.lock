@@ -1,6 +1,7 @@
-%{"exfswatch": {:hex, :exfswatch, "0.1.1"},
-  "exsync": {:hex, :exsync, "0.1.2"},
-  "floki": {:hex, :floki, "0.8.0"},
-  "fs": {:hex, :fs, "0.9.2"},
-  "mochiweb_html": {:hex, :mochiweb_html, "2.13.0"},
-  "poison": {:hex, :poison, "2.1.0"}}
+%{"ex_csv": {:hex, :ex_csv, "0.1.4", "97db712e6363ef247f87a3e5727df21542c29254c1ae8966ff7cf85386796d57", [:mix], []},
+  "exfswatch": {:hex, :exfswatch, "0.1.1", "7ccf6fc9b443d04dada3e50b21f910b4d0e4546ce7772dc6d4181fb929ea186f", [:mix], [{:fs, "~> 0.9", [hex: :fs, optional: false]}]},
+  "exsync": {:hex, :exsync, "0.1.2", "8913852c49729ad186a7dd2d6ada51978e34ac212bf77155e2643742f19bf2f9", [:mix], [{:exfswatch, "~> 0.1", [hex: :exfswatch, optional: false]}]},
+  "floki": {:hex, :floki, "0.8.0", "3ee6f8358e9f820d80f8211558458364cd137d1a7b362eb1d1989120dc288fa9", [:mix], [{:mochiweb_html, "~> 2.13", [hex: :mochiweb_html, optional: false]}]},
+  "fs": {:hex, :fs, "0.9.2", "ed17036c26c3f70ac49781ed9220a50c36775c6ca2cf8182d123b6566e49ec59", [:rebar], []},
+  "mochiweb_html": {:hex, :mochiweb_html, "2.13.0", "795b100f757681939e2c52ab042e773af6e5602f04f4e2ea19baea832b541c08", [:rebar3], []},
+  "poison": {:hex, :poison, "2.1.0", "f583218ced822675e484648fa26c933d621373f01c6c76bd00005d7bd4b82e27", [:mix], []}}

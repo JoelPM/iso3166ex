@@ -4,6 +4,7 @@ defmodule ISO3166 do
   @revid "690144849"
   @url "https://en.wikipedia.org/w/api.php?action=parse&section=#{@section}&prop=text&page=#{@title}&format=json&formatversion=2&oldid=#{@revid}"
 
+  @region_file_name Path.expand("../priv/ISO_3166-2.csv", __DIR__)
   @file_cache Path.expand("../priv/#{@title}.#{@section}.#{@revid}.html", __DIR__)
 
   unless File.exists? @file_cache do
@@ -15,6 +16,7 @@ defmodule ISO3166 do
   end
 
   [{"table", _, rows}] = File.read!(@file_cache) |> Floki.parse |> Floki.find("table.sortable")
+  {:ok, region_rows} = File.read!(@region_file_name) |> ExCsv.parse
 
   tuple = fn (name, abr2, abr3) ->
     {name, String.downcase(abr2), String.downcase(abr3)}
@@ -31,8 +33,15 @@ defmodule ISO3166 do
     end
   end) |> Enum.reverse
 
+  @regions region_rows.body
+
   defp is_downcase?(str), do: str == String.downcase(str)
   defp is_upcase?(str), do: str == String.upcase(str)
+
+  Enum.each @regions, fn ([country, region, code]) ->
+    defp do_region(unquote(String.downcase(code))), do: {unquote(country), unquote(region)}
+  end
+  defp do_region(_), do: :undefined
 
   # generate the functions that map 2 letter abbreviation to 3
   # letter abreviation with a catchall that returns :undefined
@@ -85,6 +94,7 @@ defmodule ISO3166 do
   end
 
   def all, do: @mappings
+  def regions, do: @regions
 
   def cc2to3(v), do: do_with_matching_case v, &do_cc2to3/1
 
@@ -93,4 +103,6 @@ defmodule ISO3166 do
   def cc2toname(v), do: do_with_proper_case v, &do_cc2toname/1
 
   def cc3toname(v), do: do_with_proper_case v, &do_cc3toname/1
+
+  def parse_region(v), do: do_with_proper_case v, &do_region/1
 end
