@@ -2,7 +2,7 @@ defmodule ISO3166 do
   @title "ISO_3166-1"
   @section "4"
   @revid "690144849"
-  @url "https://en.wikipedia.org/w/api.php?action=parse&section=#{@section}&prop=text&page=#{@title}&format=json&formatversion=2&oldid=#{@revid}"
+  @url "https://en.wikipedia.org/w/api.php?action=parse&section=#{@section}&prop=text&format=json&formatversion=2&oldid=#{@revid}"
 
   @region_file_name Path.expand("../priv/ISO_3166-2.csv", __DIR__)
   @file_cache Path.expand("../priv/#{@title}.#{@section}.#{@revid}.html", __DIR__)
