@@ -1,4 +1,4 @@
-%{"ex_csv": {:hex, :ex_csv, "0.1.4", "97db712e6363ef247f87a3e5727df21542c29254c1ae8966ff7cf85386796d57", [:mix], []},
+%{"ex_csv": {:hex, :ex_csv, "0.1.5", "517222efbc87673c30c20ea8fff2cb2f6c39d7ce4ca85631cfe02293c93b3ca0", [:mix], []},
   "exfswatch": {:hex, :exfswatch, "0.1.1", "7ccf6fc9b443d04dada3e50b21f910b4d0e4546ce7772dc6d4181fb929ea186f", [:mix], [{:fs, "~> 0.9", [hex: :fs, optional: false]}]},
   "exsync": {:hex, :exsync, "0.1.2", "8913852c49729ad186a7dd2d6ada51978e34ac212bf77155e2643742f19bf2f9", [:mix], [{:exfswatch, "~> 0.1", [hex: :exfswatch, optional: false]}]},
   "floki": {:hex, :floki, "0.8.0", "3ee6f8358e9f820d80f8211558458364cd137d1a7b362eb1d1989120dc288fa9", [:mix], [{:mochiweb_html, "~> 2.13", [hex: :mochiweb_html, optional: false]}]},

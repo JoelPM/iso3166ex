@@ -3,7 +3,7 @@ defmodule ISO3166.Mixfile do
 
   def project do
     [app: :iso3166,
-     version: "0.0.5",
+     version: "0.0.6",
      elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -43,7 +43,7 @@ defmodule ISO3166.Mixfile do
     [
       { :poison, "~> 2.1"             },
       { :floki,  "~> 0.7"             },
-      { :ex_csv, "~> 0.1.4"           },
+      { :ex_csv, "~> 0.1.5"           },
       { :exsync, "~> 0.1", only: :dev }
     ]
   end

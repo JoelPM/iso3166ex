@@ -15,8 +15,8 @@ defmodule ISO3166 do
     File.write! @file_cache, html
   end
 
-  [{"table", _, rows}] = File.read!(@file_cache) |> Floki.parse |> Floki.find("table.sortable")
-  {:ok, region_rows} = File.read!(@region_file_name) |> ExCsv.parse
+  [{"table", _, rows}] = @file_cache |> File.read! |> Floki.parse |> Floki.find("table.sortable")
+  {:ok, region_rows} = @region_file_name |> File.read! |> ExCsv.parse
 
   tuple = fn (name, abr2, abr3) ->
     {name, String.downcase(abr2), String.downcase(abr3)}
