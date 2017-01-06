@@ -1,4 +1,6 @@
-%{"ex_csv": {:hex, :ex_csv, "0.1.5", "517222efbc87673c30c20ea8fff2cb2f6c39d7ce4ca85631cfe02293c93b3ca0", [:mix], []},
+%{"earmark": {:hex, :earmark, "1.0.3", "89bdbaf2aca8bbb5c97d8b3b55c5dd0cff517ecc78d417e87f1d0982e514557b", [:mix], []},
+  "ex_csv": {:hex, :ex_csv, "0.1.5", "517222efbc87673c30c20ea8fff2cb2f6c39d7ce4ca85631cfe02293c93b3ca0", [:mix], []},
+  "ex_doc": {:hex, :ex_doc, "0.14.5", "c0433c8117e948404d93ca69411dd575ec6be39b47802e81ca8d91017a0cf83c", [:mix], [{:earmark, "~> 1.0", [hex: :earmark, optional: false]}]},
   "exfswatch": {:hex, :exfswatch, "0.1.1", "7ccf6fc9b443d04dada3e50b21f910b4d0e4546ce7772dc6d4181fb929ea186f", [:mix], [{:fs, "~> 0.9", [hex: :fs, optional: false]}]},
   "exsync": {:hex, :exsync, "0.1.2", "8913852c49729ad186a7dd2d6ada51978e34ac212bf77155e2643742f19bf2f9", [:mix], [{:exfswatch, "~> 0.1", [hex: :exfswatch, optional: false]}]},
   "floki": {:hex, :floki, "0.8.0", "3ee6f8358e9f820d80f8211558458364cd137d1a7b362eb1d1989120dc288fa9", [:mix], [{:mochiweb_html, "~> 2.13", [hex: :mochiweb_html, optional: false]}]},
