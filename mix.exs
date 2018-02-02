@@ -41,7 +41,7 @@ defmodule ISO3166.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      { :poison, "~> 2.1"               },
+      { :poison, "~> 3.0"               },
       { :floki,  "~> 0.7"               },
       { :ex_csv, "~> 0.1.5"             },
       { :exsync, "~> 0.1",   only: :dev },
