@@ -9,7 +9,7 @@ defmodule ISO3166 do
 
   unless File.exists? @file_cache do
     :inets.start()
-    {:ok, {_status, _headers, content}} = :httpc.request String.to_char_list(@url)
+    {:ok, {_status, _headers, content}} = :httpc.request String.to_charlist(@url)
     {:ok, json} = Poison.decode content
     html = json["parse"]["text"]
     File.write! @file_cache, html
