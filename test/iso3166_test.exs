@@ -3,50 +3,73 @@ defmodule ISO3166Test do
   doctest ISO3166
 
   test "2 char to 3 char abbreviations" do
-    Enum.each ISO3166.all, fn {_name, abr2, abr3} ->
+    Enum.each(ISO3166.all(), fn {_name, abr2, abr3, _num} ->
       assert ISO3166.cc2to3(abr2) == abr3
       assert ISO3166.cc2to3(String.capitalize(abr2)) == abr3
       assert ISO3166.cc2to3(String.upcase(abr2)) == String.upcase(abr3)
-    end
+    end)
+
     assert ISO3166.cc2to3("YY") == :undefined
     assert ISO3166.cc2to3("xx") == :undefined
   end
 
   test "3 char to 2 char abbreviations" do
-    Enum.each ISO3166.all, fn {_name, abr2, abr3} ->
+    Enum.each(ISO3166.all(), fn {_name, abr2, abr3, _num} ->
       assert ISO3166.cc3to2(abr3) == abr2
       assert ISO3166.cc3to2(String.capitalize(abr3)) == abr2
       assert ISO3166.cc3to2(String.upcase(abr3)) == String.upcase(abr2)
-    end
+    end)
+
     assert ISO3166.cc3to2("YYY") == :undefined
     assert ISO3166.cc3to2("xxx") == :undefined
   end
 
+  test "2 char to num abbreviations" do
+    Enum.each(ISO3166.all(), fn {_name, abr2, _abr3, num} ->
+      assert ISO3166.cc2to_num(abr2) == num
+    end)
+
+    assert ISO3166.cc2to_num("YY") == :undefined
+    assert ISO3166.cc2to_num("xx") == :undefined
+  end
+
+  test "3 char to num abbreviations" do
+    Enum.each(ISO3166.all(), fn {_name, _abr2, abr3, num} ->
+      assert ISO3166.cc3to_num(abr3) == num
+    end)
+
+    assert ISO3166.cc3to_num("YY") == :undefined
+    assert ISO3166.cc3to_num("xx") == :undefined
+  end
+
   test "3 char to name" do
-    Enum.each ISO3166.all, fn {name, _abr2, abr3} ->
+    Enum.each(ISO3166.all(), fn {name, _abr2, abr3, _num} ->
       assert ISO3166.cc3toname(abr3) == name
       assert ISO3166.cc3toname(String.capitalize(abr3)) == name
       assert ISO3166.cc3toname(String.upcase(abr3)) == name
-    end
+    end)
+
     assert ISO3166.cc3toname("YYY") == :undefined
     assert ISO3166.cc3toname("xxx") == :undefined
   end
 
   test "2 char to name" do
-    Enum.each ISO3166.all, fn {name, abr2, _abr3} ->
+    Enum.each(ISO3166.all(), fn {name, abr2, _abr3, _num} ->
       assert ISO3166.cc2toname(abr2) == name
       assert ISO3166.cc2toname(String.capitalize(abr2)) == name
       assert ISO3166.cc2toname(String.upcase(abr2)) == name
-    end
+    end)
+
     assert ISO3166.cc2toname("YYY") == :undefined
     assert ISO3166.cc2toname("xxx") == :undefined
   end
 
   test "regions" do
-    Enum.each ISO3166.regions, fn ([country, region, code]) ->
+    Enum.each(ISO3166.regions(), fn [country, region, code] ->
       assert ISO3166.parse_region(code) == {country, region}
       assert ISO3166.parse_region(String.downcase(code)) == {country, region}
-    end
+    end)
+
     assert ISO3166.parse_region("aa-aa") == :undefined
     assert ISO3166.parse_region("BB-BB") == :undefined
   end
