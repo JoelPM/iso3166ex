@@ -1,0 +1,5 @@
+0.1.0 - Joel Meyer <joel.meyer@gmail.com> Update Deps & Add Numeric Codes
+* Deps were pretty out of date, so that was fixed
+* Added cc2to_num and cc3to_num to provide numeric country codes
+* Added url as a function
+* Changes to work with new wiki page format

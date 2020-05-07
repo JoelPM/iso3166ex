@@ -2,14 +2,16 @@ defmodule ISO3166.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :iso3166,
-     version: "0.0.6",
-     elixir: "~> 1.0",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     description: description(),
-     package: package(),
-     deps: deps()]
+    [
+      app: :iso3166,
+      version: "0.1.0",
+      elixir: "~> 1.0",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      description: description(),
+      package: package(),
+      deps: deps()
+    ]
   end
 
   defp description do
@@ -24,7 +26,7 @@ defmodule ISO3166.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    case Mix.env == :dev do
+    case Mix.env() == :dev do
       true -> [applications: [:exsync]]
       false -> []
     end
@@ -41,11 +43,10 @@ defmodule ISO3166.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      { :poison, "~> 3.0"               },
-      { :floki,  "~> 0.7"               },
-      { :ex_csv, "~> 0.1.5"             },
-      { :exsync, "~> 0.1",   only: :dev },
-      { :ex_doc, ">= 0.0.0", only: :dev }
+      {:poison, "~> 4.0.1"},
+      {:floki, "~> 0.26"},
+      {:ex_csv, "~> 0.1.5"},
+      {:ex_doc, ">= 0.21.3", only: :dev}
     ]
   end
 
